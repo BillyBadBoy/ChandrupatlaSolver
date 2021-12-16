@@ -39,7 +39,7 @@ public class ChandrupatlaSolver {
      * <p>
      * <tt>ChandrupatlaSolver.solve(x -> x - Math.cos(x), 0.0, 1.0, 0.0, 1e-12, 20);</tt>
      * </p>
-     * (This gives the solution as 0.7390851332151607, which is correct.)
+     * This gives the correct solution: 0.7390851332151607
      *
      * @param f     the function to be solved
      * @param x_0   one end of the initial search interval
