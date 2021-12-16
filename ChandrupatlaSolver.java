@@ -95,7 +95,7 @@ public class ChandrupatlaSolver {
 
             if ((t_l > 0.5) || f_m == 0.0) return x_m;
 
-            double xi  = (a   - b)   / (c   - b);
+            double xi  = (a - b) / (c - b);
             double phi = (f_a - f_b) / (f_c - f_b);
 
             t = ((1.0 - sqrt(1 - xi)) < phi && phi < sqrt(xi)) ?
