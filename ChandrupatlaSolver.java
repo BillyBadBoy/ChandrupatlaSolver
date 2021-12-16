@@ -99,8 +99,10 @@ public class ChandrupatlaSolver {
             double phi = (f_a - f_b) / (f_c - f_b);
 
             t = ((1.0 - sqrt(1 - xi)) < phi && phi < sqrt(xi)) ?
-                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) +
-                            ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 0.5;
+                    // use inverse quadratic interpolation
+                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) + ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 
+                    // use bisection
+                    0.5;
 
             // ensure t lies in interval [t_l, 1 - t_l]
             if (t < t_l) t = t_l; else if (t > (1 - t_l)) t = 1 - t_l;
