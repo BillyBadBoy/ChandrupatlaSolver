@@ -19,7 +19,7 @@ public class ChandrupatlaSolver {
      * <p>
      * This method requires an initial interval <tt>[x_0,x_1]</tt> that is
      * known to contain a root. More precisely it is required that:
-     * <tt>sign(f(x_0).sign(f(x_0) ≤ 0</tt>.
+     * <tt>sign(f(x_0).sign(f(x_1) ≤ 0</tt>.
      * <p>
      * The required precision can be set using either (or both) tolerance
      * parameters. One parameter is for setting the absolute error,
