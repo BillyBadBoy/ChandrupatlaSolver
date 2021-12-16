@@ -60,34 +60,34 @@ public class ChandrupatlaSolver {
         double a, b, c, f_a, f_b, f_c;
 
         // initialization
-        a   = x_1; f_a = f.applyAsDouble(a);
-        b   = x_0; f_b = f.applyAsDouble(b);
+        a = x_1; f_a = f.applyAsDouble(a);
+        b = x_0; f_b = f.applyAsDouble(b);
 
         double t = 0.5;
 
         // check that x_0 and x_1 'bracket' a root
         if (signum(f_a) * signum(f_b) > 0) throw
-                new ArithmeticException("sign(f(x_0)) and sign(f(x_1)) must have different!");
+                new ArithmeticException("sign(f(x_0)) and sign(f(x_1)) must be different!");
 
         // iteration
         for (int i = 0; i < maxNumIterations; i++) {
             double x_t = a + t * (b - a);
             double f_t = f.applyAsDouble(x_t);
             if (signum(f_t) == signum(f_a)) {
-                c = a; f_c = f_a;
+                c = a; f_c = f_a; // a => c
             }
             else {
-                c = b; f_c = f_b;
-                b = a; f_b = f_a;
+                c = b; f_c = f_b; // b => c
+                b = a; f_b = f_a; // a => b
             }
-            a = x_t; f_a = f_t;
+            a = x_t; f_a = f_t;   // t => a
 
             double x_m, f_m;
             if (abs(f_a) < abs(f_b)) {
-                x_m = a; f_m = f_a;
+                x_m = a; f_m = f_a; // a => m
             }
             else {
-                x_m = b; f_m = f_b;
+                x_m = b; f_m = f_b; // b => m
             }
 
             double tol = 2 * rel_tolerance * abs(x_m) + abs_tolerance;
@@ -105,6 +105,6 @@ public class ChandrupatlaSolver {
             if (t < t_l) t =  t_l;
             if (t > (1 - t_l)) t = 1 - t_l;
         }
-        throw new ArithmeticException("No root found after " + maxNumIterations + " iterations");
+        throw new ArithmeticException("No root found after " + maxNumIterations + " iterations!");
     }
 }
