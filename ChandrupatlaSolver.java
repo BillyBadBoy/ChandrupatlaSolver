@@ -5,10 +5,10 @@ import static java.lang.Math.sqrt;
 
 /**
  * <p>Implementation of Chandrupatla's root finding algorithm.</p>
- * Based on the description given in 'Computational Physics,
+ * <p>Based on the description given in 'Computational Physics,
  * Simulation of Classical and Quantum Systems.' by Philipp O.J. Scherer
- * (3rd ed. pages 109-111)
- * @author      William E Morgan
+ * (3rd ed. pages 109-111)</p>
+ * @author William E Morgan
  */
 public class ChandrupatlaSolver {
     /**
