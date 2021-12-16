@@ -108,4 +108,3 @@ public class ChandrupatlaSolver {
         throw new ArithmeticException("No root found after " + maxNumIterations + " iterations!");
     }
 }
-`
