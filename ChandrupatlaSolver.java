@@ -1,5 +1,3 @@
-package com.wem;
-
 import java.util.function.DoubleUnaryOperator;
 
 import static java.lang.Math.*;
