@@ -100,7 +100,8 @@ public class ChandrupatlaSolver {
 
             t = ((1.0 - sqrt(1 - xi)) < phi && phi < sqrt(xi)) ?
                     // use inverse quadratic interpolation
-                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) + ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 
+                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) + 
+                            ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 
                     // use bisection
                     0.5;
 
