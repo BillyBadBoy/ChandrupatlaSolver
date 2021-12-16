@@ -28,7 +28,7 @@ public class ChandrupatlaSolver {
      * To prevent infinite loops the maximum number of iterations must
      * be specified. Failure to find a root can occur either because no
      * root exists or because no Java double exists that is within the
-     * desired tolerance. (This means that specifying very small tolerances
+     * desired tolerance. (In other words specifying very small tolerances
      * may cause the algorithm to fail to find a root).
      * <p>
      * Example: find the value of <tt>x</tt> that satisfies: <tt>x=cos(x)</tt>.
