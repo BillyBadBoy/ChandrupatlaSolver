@@ -25,11 +25,11 @@ public class ChandrupatlaSolver {
      * parameters. One parameter is for setting the absolute error,
      * while the other is for setting the relative error.
      * <p>
-     * To prevent infinite loops the maximum number of iterations must
+     * To guard against infinite loops the maximum number of iterations must
      * be specified. Failure to find a root can occur either because no
-     * root exists or because no Java double exists that is within the
-     * desired tolerance. (In other words specifying very small tolerances
-     * may cause the algorithm to fail to find a root).
+     * root exists or because the desired tolerance cannot be achieved. (In 
+     * other words specifying very small tolerances may cause the algorithm 
+     * to fail to find a root).
      * <p>
      * Example: find the value of <tt>x</tt> that satisfies: <tt>x=cos(x)</tt>.
      * i.e. find a root of the function: <tt>f(x)=x-cos(x)</tt>. This function
