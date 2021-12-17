@@ -82,6 +82,7 @@ public class ChandrupatlaSolver {
             }
             a = x_t; f_a = f_t;   // t => a
 
+            // set (x_m, f_m) to better of (a, f_a) or (b, f_b)
             double x_m, f_m;
             if (abs(f_a) < abs(f_b)) {
                 x_m = a; f_m = f_a; // a => m
