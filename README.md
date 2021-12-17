@@ -8,7 +8,7 @@ Here we solve this function:
 ```
 f(x) = (x + 3)(x - 1)^2
 ```
-This same function is solved in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method#Example).
+This same function is solved in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method).
 This allows Chandrupatla's and Brent's algorithms to be compared.
  
 A root of function `f` can be found using the Chandrupatla solver like this:
@@ -30,8 +30,8 @@ The solver is called with the initial interval: `[-4, 4/3]`. The absolute tolera
 is set to `1e-12` (which means we require 12 siginicant figures accuracy). The maximum number of iterations to perform is set at 
 25 (usually far more than enough).
 
-The solver quickly produces the correct result: `-3.0`. For the sake of comparison (with the Brent wikipedia example), here are the
-intervals after each iteration:
+The solver quickly produces the correct result: `-3.0`. For the sake of comparison (with the 
+[Brent wikipedia example](https://en.wikipedia.org/wiki/Brent%27s_method#Example)), here are the intervals after each iteration:
 
 | #     | Lower             | Upper              | 
 | -- | ----------------- | ------------------ | 
