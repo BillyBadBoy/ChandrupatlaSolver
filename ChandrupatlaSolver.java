@@ -44,8 +44,8 @@ public class ChandrupatlaSolver {
      * @param f     the function to be solved
      * @param x_0   one end of the initial search interval
      * @param x_1   the other end of the initial search interval
-     * @param abs_tolerance    the absolute tolerance
-     * @param rel_tolerance    the relative tolerance
+     * @param abs_tolerance    acceptable absolute error in root
+     * @param rel_tolerance    acceptable relative error in root
      * @param maxNumIterations the maximum number of iterations to perform
      * @return a root of the function f
      */
