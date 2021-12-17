@@ -4,14 +4,27 @@ Java implementation of Chandrupatla's root finding algorithm
 This solver is reputed to be faster than the (much better known) Brent solver.
 
 ## Example
-Here we solve the same function used in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method#Example), namely:
+Here we solve this function:
 ```
-y = (x + 3)(x - 1)^2
+f(x) = (x + 3)(x - 1)^2
 ```
-A root can be found using the Chandrupatla solver like this:
+This same function is solved in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method#Example).
+This allows Chandrupatla's and Brent's algorithms to be compared.
+ 
+A root of function `f` can be found using the Chandrupatla solver like this:
 ```java
-DoubleUnaryOperator f = x -> (x + 3) * (x - 1) * (x - 1);
-double root = ChandrupatlaSolver.solve(f, -4.0, 1.3333, 0.0, 1e-12, 25); // root = -3.0
+// the function to solve                                          
+DoubleUnaryOperator f = x -> (x + 3) * (x - 1) * (x - 1);         
+                                                                  
+// call the solver                                                
+double r = ChandrupatlaSolver.solve(                              
+        f,                   // function to solve                 
+        -4.0,                // initial interval lower bound      
+        4.0/3,               // initial interval upper bound      
+        0.0,                 // absolute tolerance                
+        1e-12,               // relative tolerance                
+        25                   // max number of iterations permitted
+);
 ```
 The solver is called with the initial interval: `[-4, 4/3]`. The absolute tolerance is set to zero, while the relative tolerance
 is set to `1e-12` (which means we require 12 siginicant figures accuracy). The maximum number of iterations to perform is set at 
@@ -31,5 +44,5 @@ intervals after each iteration:
 | 7  |-3.000000000110537 |-2.9999944542156562 |
 | 8  |-3.000000000110537 |-3.0                |
 
-The algorithm termintates after 8 iterations because an exact root has been found: `f(-3.0) = 0`. The performance of the 
-Chandrupatla solver is at least as good, if not better, than the Brent solver.
+The algorithm termintates after 8 iterations because an exact root has been found: `f(-3.0) = 0`. As can be seen, the performance 
+of the Chandrupatla solver is at least as good, if not better, than the Brent solver.
