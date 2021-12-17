@@ -13,14 +13,14 @@ A root can be found using the Chandrupatla solver like this:
 DoubleUnaryOperator f = x -> (x + 3) * (x - 1) * (x - 1);
 double root = ChandrupatlaSolver.solve(f, -4.0, 1.3333, 0.0, 1e-12, 25); // root = -3.0
 ```
-The solver is called with the same initial interval as is used in the wikepedia page: `[-4, 4/3]`. The absolute tolerance is set
+The solver is called with the same initial interval as is used in the wikipedia page: `[-4, 4/3]`. The absolute tolerance is set
 to zero, while the relative tolerance is set to `1e-12` (which means we require 12 siginicant figures accuracy). The maximum number
 of iterations to perform is set at 25 (usually far more than enough).
 
 The solver quickly produces the correct result: `-3.0`. For the sake of comparison (with the Brent wikipedia example), here are the
 intervals after each iteration:
 
-| Iter. | Lower             | Upper              | 
+| #     | Lower             | Upper              | 
 | ----- | ----------------- | ------------------ | 
 | 1     |-4.0               |-1.3333333333333333 | 
 | 2     |-4.0               |-2.666666666666667  |
