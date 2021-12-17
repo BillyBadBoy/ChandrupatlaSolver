@@ -92,7 +92,7 @@ public class ChandrupatlaSolver {
             }
 
             double tol = 2 * rel_tolerance * abs(x_m) + abs_tolerance;
-            double t_l = tol / abs(b - c);
+            double t_l = tol / abs(a - b);
 
             if ((t_l > 0.5) || f_m == 0.0) return x_m;
 
