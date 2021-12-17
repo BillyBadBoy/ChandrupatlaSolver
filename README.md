@@ -4,7 +4,7 @@ Java implementation of Chandrupatla's root finding algorithm
 This solver is reputed to be faster than the (much better known) Brent solver.
 
 ## Example
-Here we use the function used in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method#Example), namely:
+Here we solve the same function used in the wikipedia page for [Brent's method](https://en.wikipedia.org/wiki/Brent%27s_method#Example), namely:
 ```
 y = (x + 3)(x - 1)^2
 ```
