@@ -1,7 +1,9 @@
+package com.wem;
+
 import java.util.function.DoubleUnaryOperator;
 
 import static java.lang.Math.*;
-import static java.lang.Math.sqrt;
+
 
 /**
  * <p>Implementation of Chandrupatla's root finding algorithm.</p>
@@ -19,17 +21,18 @@ public class ChandrupatlaSolver {
      * <p>
      * This method requires an initial interval <tt>[x_0,x_1]</tt> that is
      * known to contain a root. More precisely it is required that:
-     * <tt>sign(f(x_0).sign(f(x_1) <= 0</tt>.
+     * <tt>sign(f(x_0).sign(f(x_1) ≤ 0</tt>.
      * <p>
      * The required precision can be set using either (or both) tolerance
      * parameters. One parameter is for setting the absolute error,
-     * while the other is for setting the relative error.
+     * while the other is for setting the relative error. A result is returned
+     * when either tolerance is satisfied.
      * <p>
-     * To guard against infinite loops the maximum number of iterations must
+     * To prevent infinite loops the maximum number of iterations must
      * be specified. Failure to find a root can occur either because no
-     * root exists or because the desired tolerance cannot be achieved. (In 
-     * other words specifying very small tolerances may cause the algorithm 
-     * to fail to find a root).
+     * root exists or because no Java double exists that is within the
+     * desired tolerance. (In other words specifying very small tolerances
+     * may cause the algorithm to fail to find a root).
      * <p>
      * Example: find the value of <tt>x</tt> that satisfies: <tt>x=cos(x)</tt>.
      * i.e. find a root of the function: <tt>f(x)=x-cos(x)</tt>. This function
@@ -39,13 +42,13 @@ public class ChandrupatlaSolver {
      * <p>
      * <tt>ChandrupatlaSolver.solve(x -> x - Math.cos(x), 0.0, 1.0, 0.0, 1e-12, 20);</tt>
      * </p>
-     * This gives the correct solution: 0.7390851332151607
+     * (This gives the solution as 0.7390851332151607, which is correct.)
      *
      * @param f     the function to be solved
      * @param x_0   one end of the initial search interval
      * @param x_1   the other end of the initial search interval
-     * @param abs_tolerance    acceptable absolute error in root
-     * @param rel_tolerance    acceptable relative error in root
+     * @param abs_tolerance    x absolute tolerance
+     * @param rel_tolerance    x relative tolerance
      * @param maxNumIterations the maximum number of iterations to perform
      * @return a root of the function f
      */
@@ -82,7 +85,7 @@ public class ChandrupatlaSolver {
             }
             a = x_t; f_a = f_t;   // t => a
 
-            // set (x_m, f_m) to better of (a, f_a) or (b, f_b)
+            // pick 'better' solution out of a and b
             double x_m, f_m;
             if (abs(f_a) < abs(f_b)) {
                 x_m = a; f_m = f_a; // a => m
@@ -91,23 +94,21 @@ public class ChandrupatlaSolver {
                 x_m = b; f_m = f_b; // b => m
             }
 
-            double tol = 2 * rel_tolerance * abs(x_m) + abs_tolerance;
-            double t_l = tol / abs(a - b);
-
-            if ((t_l > 0.5) || f_m == 0.0) return x_m;
+            double tl = max(rel_tolerance * abs(x_m), abs_tolerance) / abs(a - b);
+            if ((tl >= 1.0) || f_m == 0.0) return x_m;
 
             double xi  = (a - b) / (c - b);
             double phi = (f_a - f_b) / (f_c - f_b);
 
             t = ((1.0 - sqrt(1 - xi)) < phi && phi < sqrt(xi)) ?
-                    // use inverse quadratic interpolation
-                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) + 
-                            ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 
-                    // use bisection
-                    0.5;
+                    (f_a / (f_b - f_a)) * (f_c / (f_b - f_c)) +
+                            ((c - a) / (b - a)) * (f_a / (f_c - f_a)) * (f_b / (f_c - f_b)) : 0.5;
 
-            // ensure t lies in interval [t_l, 1 - t_l]
-            if (t < t_l) t = t_l; else if (t > (1 - t_l)) t = 1 - t_l;
+
+            // ensure that t is not unnecessarily close to 0.0 or 1.0
+            if      (tl > 0.5)     t = 0.5;
+            else if (t < tl)       t = tl;
+            else if (t > 1.0 - tl) t = 1.0 - tl;
         }
         throw new ArithmeticException("No root found after " + maxNumIterations + " iterations!");
     }
